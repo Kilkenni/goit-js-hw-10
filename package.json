@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kilkenni/goit-js-hw-10.git" 
+    "url": "git+https://github.com/Kilkenni/goit-js-hw-10.git"
   },
   "keywords": [],
   "author": "Kilkenni",
@@ -24,5 +24,9 @@
     "parcel-plugin-nuke-dist": "^1.0.1",
     "posthtml-include": "^1.6.2",
     "sass": "^1.32.8"
+  },
+  "dependencies": {
+    "lodash.debounce": "^4.0.8",
+    "notiflix": "^3.2.2"
   }
 }
