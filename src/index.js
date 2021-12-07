@@ -17,20 +17,19 @@ function onSearchInput() {
     if (trimmedCountry !== "") {
         fetchCountries(trimmedCountry)
             .then((countriesJSON) => {
+                clearMarkup();
+
                 if (countriesJSON.length > 10) {
                     Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
                     return;
                 }
                 
-                if ((countriesJSON.length >= 2) && (countriesJSON.length <= 10)) {
-                    clearMarkup();
+                if ((countriesJSON.length >= 2) && (countriesJSON.length <= 10)) {                
                     countryListElem.insertAdjacentHTML("beforeend", getMultipleCountriesMarkup(countriesJSON));
                     return;
                 }
 
                 if (countriesJSON.length === 1) {
-                    clearMarkup();
-
                     countryInfoElem.insertAdjacentHTML("beforeend", getSingleCountryMarkup(countriesJSON));
                     return;
                 }
