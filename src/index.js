@@ -23,14 +23,13 @@ function onSearchInput() {
                 }
                 
                 if ((countriesJSON.length >= 2) && (countriesJSON.length <= 10)) {
-                    let markup = "";
-                    //for
-                    console.log(countriesJSON);
+                    clearMarkup();
+                    countryListElem.insertAdjacentHTML("beforeend", getMultipleCountriesMarkup(countriesJSON));
                     return;
                 }
 
                 if (countriesJSON.length === 1) {
-                    countryInfoElem.innerHTML = "";
+                    clearMarkup();
 
                     countryInfoElem.insertAdjacentHTML("beforeend", getSingleCountryMarkup(countriesJSON));
                     return;
@@ -40,6 +39,19 @@ function onSearchInput() {
                 Notiflix.Notify.failure("Oops, there is no country with that name");
             });
     }
+}
+
+function clearMarkup() {
+    countryInfoElem.innerHTML = "";
+    countryListElem.innerHTML = "";
+}
+
+function getMultipleCountriesMarkup(countriesJSON) {
+    let countriesMarkup = countriesJSON.reduce((countriesMarkup, country) => {
+        return countriesMarkup + `<li><img src=${country.flags.svg} alt="country flag" width="50"><span>${country.name.official}</span></li>`;
+    }, "");
+
+    return countriesMarkup;
 }
 
 function getSingleCountryMarkup(countriesJSON) {
